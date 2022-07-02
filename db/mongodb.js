@@ -1,50 +1,16 @@
-import { MongoClient } from 'mongodb';
+import {MongoClient} from 'mongodb';
 
-const MONGODB_URI = process.env.MONGODB_URI;
-const MONGODB_DB = process.env.DB_NAME;
+const MONGODB_URL = process.env.MONGODB_URL
 
-// check the MongoDB URI
-if (!MONGODB_URI) {
-    throw new Error('Define the MONGODB_URI environmental variable');
+let client
+let connectToDatabase
+
+const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
 }
 
-// check the MongoDB DB
-if (!MONGODB_DB) {
-    throw new Error('Define the MONGODB_DB environmental variable');
-}
+client = new MongoClient(`${MONGODB_URL}`, options)
+connectToDatabase = client.connect()
 
-let cachedClient = null;
-let cachedDb = null;
-
-export async function connectToDatabase() {
-
-    console.log("this is a test")
-    // check the cached.
-    if (cachedClient && cachedDb) {
-        // load from cache
-        return {
-            client: cachedClient,
-            db: cachedDb,
-        };
-    }
-
-    // set the connection options
-    const opts = {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    };
-
-    // Connect to cluster
-    let client = new MongoClient(MONGODB_URI, opts);
-    await client.connect();
-    let db = client.db(MONGODB_DB);
-
-    // set cache
-    cachedClient = client;
-    cachedDb = db;
-
-    return {
-        client: cachedClient,
-        db: cachedDb,
-    };
-}
+export default connectToDatabase
