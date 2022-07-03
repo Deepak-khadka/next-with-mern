@@ -13,7 +13,7 @@ export default function AdminLogin() {
         }
 
         const JSONdata = JSON.stringify(data)
-        
+
         const options = {
             method: 'POST',
             headers: {
@@ -36,7 +36,7 @@ export default function AdminLogin() {
                 <div className="col-4 offset-4 mt-5">
                     <form onSubmit={ handleSubmit } action="/admin-login-check" method="POST" className="form-signin" data-bitwarden-watching="1">
                         <div className="text-center mb-4">
-                            <h1 className="h3 mb-3 font-weight-normal">Admin Login</h1>
+                            <h1 className="h3 mb-3 font-weight-normal">Admin Login { 'test'}</h1>
                         </div>
 
                         <div className="form-label-group">
