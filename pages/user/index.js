@@ -1,9 +1,15 @@
 import Link from 'next/link'
 import SimpleLayout from '../../component/layouts/sample'
+import Head from "next/head";
 
 export default function Articles(initialData) {
   return (
     <SimpleLayout>
+
+      <Head>
+        <title>User List</title>
+      </Head>
+
       <div className="row">
         <div className="col-md-4">
           <div className="card mb-4 shadow-sm">

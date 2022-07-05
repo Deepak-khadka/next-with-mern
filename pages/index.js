@@ -1,8 +1,12 @@
 import SimpleLayout from '../component/layouts/sample'
+import Head from "next/head";
 
 export default function Home(initialData) {
   return (
     <SimpleLayout>
+        <Head>
+            <title>Khata Management</title>
+        </Head>
       <section className="jumbotron text-center">
         <div className="container">
           <h1>Subscribe to Deepak khadka</h1>
